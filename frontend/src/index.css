@@ -1,0 +1,297 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 29 52 84;
+    --color-teal: 20 184 166;
+    --bg-primary: 249 250 251;
+    --bg-secondary: 255 255 255;
+    --bg-tertiary: 243 244 246;
+    --text-primary: 17 24 39;
+    --text-secondary: 75 85 99;
+    --text-tertiary: 156 163 175;
+    --border-primary: 229 231 235;
+    --border-secondary: 209 213 219;
+  }
+
+  .dark {
+    --bg-primary: 17 24 39;
+    --bg-secondary: 31 41 55;
+    --bg-tertiary: 55 65 81;
+    --text-primary: 249 250 251;
+    --text-secondary: 209 213 219;
+    --text-tertiary: 156 163 175;
+    --border-primary: 55 65 81;
+    --border-secondary: 75 85 99;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply font-sans antialiased bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-50 transition-colors duration-200;
+  }
+
+  * {
+    @apply border-gray-200 dark:border-gray-700 transition-colors duration-200;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400 dark:bg-gray-500;
+  }
+
+  /* Focus styles */
+  :focus-visible {
+    @apply outline-none ring-2 ring-civic-teal ring-offset-2 ring-offset-white dark:ring-offset-gray-900;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-civic-teal/30 text-civic-navy dark:text-white;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn bg-civic-navy text-white hover:bg-civic-navy/90 focus:ring-civic-navy dark:bg-civic-navy dark:hover:bg-civic-navy/80;
+  }
+
+  .btn-secondary {
+    @apply btn bg-white text-civic-navy border border-civic-navy hover:bg-civic-navy/5 focus:ring-civic-navy dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100 dark:hover:bg-gray-700;
+  }
+
+  .btn-teal {
+    @apply btn bg-civic-teal text-white hover:bg-civic-teal/90 focus:ring-civic-teal;
+  }
+
+  .btn-danger {
+    @apply btn bg-civic-red text-white hover:bg-civic-red/90 focus:ring-civic-red;
+  }
+
+  .btn-ghost {
+    @apply btn text-gray-600 hover:bg-gray-100 focus:ring-gray-400 dark:text-gray-300 dark:hover:bg-gray-800;
+  }
+
+  .input {
+    @apply w-full px-3 py-2 border rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-civic-teal focus:border-civic-teal transition-colors duration-200 bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400;
+  }
+
+  .input-error {
+    @apply border-civic-red focus:ring-civic-red focus:border-civic-red;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1;
+  }
+
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden transition-colors duration-200;
+  }
+
+  .card-hover {
+    @apply card hover:shadow-md transition-shadow duration-200;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-primary {
+    @apply badge bg-civic-navy/10 text-civic-navy dark:bg-civic-navy/20 dark:text-civic-teal;
+  }
+
+  .badge-teal {
+    @apply badge bg-civic-teal/10 text-civic-teal dark:bg-civic-teal/20;
+  }
+
+  .badge-green {
+    @apply badge bg-civic-green/10 text-civic-green dark:bg-civic-green/20;
+  }
+
+  .badge-amber {
+    @apply badge bg-civic-amber/10 text-civic-amber dark:bg-civic-amber/20;
+  }
+
+  .badge-red {
+    @apply badge bg-civic-red/10 text-civic-red dark:bg-civic-red/20;
+  }
+
+  .status-badge {
+    @apply badge;
+  }
+
+  .status-reported { @apply bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300; }
+  .status-under_review { @apply bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300; }
+  .status-needs_more_info { @apply bg-orange-50 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300; }
+  .status-verified { @apply bg-teal-50 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300; }
+  .status-assigned { @apply bg-indigo-50 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300; }
+  .status-in_progress { @apply bg-purple-50 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300; }
+  .status-resolved_pending_confirmation { @apply bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-300; }
+  .status-closed { @apply bg-gray-50 text-gray-700 dark:bg-gray-700 dark:text-gray-300; }
+  .status-rejected { @apply bg-red-50 text-red-700 dark:bg-red-900/30 dark:text-red-300; }
+  .status-reopened { @apply bg-pink-50 text-pink-700 dark:bg-pink-900/30 dark:text-pink-300; }
+
+  .priority-low { @apply bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300; }
+  .priority-medium { @apply bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300; }
+  .priority-high { @apply bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300; }
+  .priority-critical { @apply bg-orange-50 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300; }
+  .priority-safety_escalation { @apply bg-red-50 text-red-700 dark:bg-red-900/30 dark:text-red-300; }
+
+  .category-icon {
+    @apply w-5 h-5;
+  }
+
+  .page-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8;
+  }
+
+  .section-title {
+    @apply text-2xl font-bold text-gray-900 dark:text-white mb-6;
+  }
+
+  .subsection-title {
+    @apply text-lg font-semibold text-gray-900 dark:text-white mb-4;
+  }
+
+  /* Map container dark mode */
+  .dark .leaflet-container {
+    @apply bg-gray-800;
+  }
+
+  .dark .leaflet-tile-pane img {
+    @apply brightness-90 contrast-125;
+  }
+
+  .dark .leaflet-popup-content-wrapper {
+    @apply bg-gray-800 text-white shadow-xl;
+  }
+
+  .dark .leaflet-popup-tip {
+    @apply bg-gray-800;
+  }
+
+  .dark .leaflet-control-zoom {
+    @apply bg-gray-800 border-gray-600;
+  }
+
+  .dark .leaflet-control-zoom a {
+    @apply text-white border-b border-gray-600 hover:bg-gray-700;
+  }
+
+  .dark .leaflet-control-attribution {
+    @apply bg-gray-800/90 text-gray-400;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.3s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  /* Glass morphism */
+  .glass {
+    @apply bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl border border-white/20 dark:border-gray-700/20;
+  }
+
+  .glass-strong {
+    @apply bg-white/80 dark:bg-gray-800/80 backdrop-blur-2xl border border-white/30 dark:border-gray-700/30;
+  }
+}
+
+.leaflet-container {
+  @apply rounded-xl;
+  height: 100%;
+  width: 100%;
+}
+
+.leaflet-popup-content-wrapper {
+  @apply rounded-lg shadow-lg;
+}
+
+.leaflet-popup-content {
+  @apply p-2;
+}
+
+.custom-marker {
+  @apply w-10 h-10 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg border-2 border-white dark:border-gray-800;
+}
+
+.marker-cluster {
+  @apply rounded-full flex items-center justify-center text-white text-sm font-bold shadow-lg border-2 border-white dark:border-gray-800;
+}
+
+.marker-cluster-small { @apply bg-civic-teal; }
+.marker-cluster-medium { @apply bg-civic-amber; }
+.marker-cluster-large { @apply bg-civic-red; }
+
+/* Toast notifications */
+.toast-enter {
+  animation: slideInRight 0.3s ease-out;
+}
+
+.toast-exit {
+  animation: slideOutRight 0.3s ease-in;
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideOutRight {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(100%); }
+}
